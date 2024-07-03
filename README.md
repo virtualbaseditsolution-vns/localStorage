@@ -1,29 +1,27 @@
 # assignment
 
-A new Flutter project assignment
+A new Flutter project assignment with Local Storage 
 
 ## Getting Started
 
-1- Login / Signup Page with local db, once signup same credentials use for login
-
+1- Login / Signup Page with local db, once signup same credentials use for login <br>
+<img src="assets/screenshots/login.jpg" alt="Project Screenshot" width="200"/>
+<img src="assets/screenshots/signup.jpg" alt="Project Screenshot" width="200"/>
+<br>
 2- Once complete show a notification to user for signup
 
 3- After login dashboard where need to show list and details using this api
 
 https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
+<br>
+<img src="assets/screenshots/dashboard.jpg" alt="Project Screenshot" width="200"/>
 
 
+4- Profile page need to show detail of user <br>
+<img src="assets/screenshots/profile.jpg" alt="Project Screenshot" width="200"/><br>
+5- All created user also needs to show inside app<br>
 
-4- Profile page need to show detail of user
-
-5- All created user also needs to show inside app
-
-
-## Screenshot
-Below is a screenshot of the home page of the application:
-
-![Home Page Screenshot](assets/screenshots/login.jpg)
-
+<img src="assets/screenshots/menu.jpg" alt="Project Screenshot" width="200"/>
 
 
 A few resources to get you started if this is your first Flutter project:

@@ -32,91 +32,100 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height*0.2,),
-            Center(
-              child: Form(
-                key: formKey,
-                child: Card(
-                  elevation: 0.2,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Center(child: Text("Sign Up",style: heading3,)),
-                        vSpaceBig,
-                        TextFormField(
-                          controller: name,
-                          validator: (val)=>Validators.empty(val!,"Name required"),
-                          decoration: inputDecoration(
-                            hintText: "Full Name",
+        body:LayoutBuilder(
+          builder: (context,size){
+            return Center(
+              child: SizedBox(
+                width: size.maxWidth>600?600:size.maxWidth,
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  children: [
+                    SizedBox(height: size.maxWidth>600?60:MediaQuery.of(context).size.height*0.2,),
+                    Center(
+                      child: Form(
+                        key: formKey,
+                        child: Card(
+                          elevation: 0.2,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Center(child: Text("Sign Up",style: heading3,)),
+                                vSpaceBig,
+                                TextFormField(
+                                  controller: name,
+                                  validator: (val)=>Validators.empty(val!,"Name required"),
+                                  decoration: inputDecoration(
+                                    hintText: "Full Name",
+                                  ),
+                                ),
+                                vSpaceBig,
+                                TextFormField(
+                                  controller: mobile,
+                                  // validator: (val)=>Validators.empty(val!,"Mobile required"),
+                                  decoration: inputDecoration(
+                                    hintText: "Mobile",
+                                  ),
+                                ),
+                                vSpaceBig,
+                                TextFormField(
+                                  controller: email,
+                                  validator: (val)=>Validators.email(val!),
+                                  decoration: inputDecoration(
+                                    hintText: "Email",
+                                  ),
+                                ),
+                                vSpaceBig,
+                                TextFormField(
+                                  controller: password,
+                                  validator: (val)=>Validators.validatePassword(val!),
+                                  obscureText: !viewPassword,
+                                  decoration: inputDecoration(
+                                      suffixIcon: InkWell(onTap:(){
+                                        setState(() {
+                                          viewPassword = !viewPassword;
+                                        });
+                                      },child: Icon(!viewPassword?CupertinoIcons.eye_slash:CupertinoIcons.eye,size: 25,),),
+                                      hintText: "Password"),
+                                ),
+                                vSpaceBig,
+                                TextFormField(
+                                  controller: confirmPassword,
+                                  validator: (val)=>Validators.confirmPassword(password.text, val!),
+                                  obscureText: !viewCPassword,
+                                  decoration: inputDecoration(
+                                      suffixIcon: InkWell(onTap:(){
+                                        setState(() {
+                                          viewCPassword = !viewCPassword;
+                                        });
+                                      },child: Icon(!viewCPassword?CupertinoIcons.eye_slash:CupertinoIcons.eye,size: 25,),),
+                                      hintText: "Confirm Password"),
+                                ),
+                                vSpaceBig,
+                                ElevatedButton(onPressed: signUp, child: const Text("SignUp"))
+                              ],
+                            ),
                           ),
                         ),
-                        vSpaceBig,
-                        TextFormField(
-                          controller: mobile,
-                          // validator: (val)=>Validators.empty(val!,"Mobile required"),
-                          decoration: inputDecoration(
-                            hintText: "Mobile",
-                          ),
-                        ),
-                        vSpaceBig,
-                        TextFormField(
-                          controller: email,
-                          validator: (val)=>Validators.email(val!),
-                          decoration: inputDecoration(
-                            hintText: "Email",
-                          ),
-                        ),
-                        vSpaceBig,
-                        TextFormField(
-                          controller: password,
-                          validator: (val)=>Validators.validatePassword(val!),
-                          obscureText: !viewPassword,
-                          decoration: inputDecoration(
-                              suffixIcon: InkWell(onTap:(){
-                                setState(() {
-                                  viewPassword = !viewPassword;
-                                });
-                              },child: Icon(!viewPassword?CupertinoIcons.eye_slash:CupertinoIcons.eye,size: 25,),),
-                              hintText: "Password"),
-                        ),
-                        vSpaceBig,
-                        TextFormField(
-                          controller: confirmPassword,
-                          validator: (val)=>Validators.confirmPassword(password.text, val!),
-                          obscureText: !viewCPassword,
-                          decoration: inputDecoration(
-                              suffixIcon: InkWell(onTap:(){
-                                setState(() {
-                                  viewCPassword = !viewCPassword;
-                                });
-                              },child: Icon(!viewCPassword?CupertinoIcons.eye_slash:CupertinoIcons.eye,size: 25,),),
-                              hintText: "Confirm Password"),
-                        ),
-                        vSpaceBig,
-                        ElevatedButton(onPressed: signUp, child: const Text("SignUp"))
-                      ],
+                      ),
                     ),
-                  ),
+                    vSpaceBig,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Already have an Account?",style: headingSmall,),
+                        TextButton(onPressed: (){
+                          Get.back();
+                        }, child: Text("Login",style: headingSmall,))
+                      ],
+                    )
+                  ],
                 ),
               ),
-            ),
-            vSpaceBig,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Already have an Account?",style: headingSmall,),
-                TextButton(onPressed: (){
-                  Get.back();
-                }, child: Text("Login",style: headingSmall,))
-              ],
-            )
-          ],
+            );
+          },
         )
     );
   }

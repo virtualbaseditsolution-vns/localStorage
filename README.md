@@ -4,9 +4,30 @@ A new Flutter project assignment
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1- Login / Signup Page with local db, once signup same credentials use for login
+
+2- Once complete show a notification to user for signup
+
+3- After login dashboard where need to show list and details using this api
+
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
+
+
+
+4- Profile page need to show detail of user
+
+5- All created user also needs to show inside app
+
+
+## Screenshot
+Below is a screenshot of the home page of the application:
+
+![Home Page Screenshot](assets/screenshots/login.jpg)
+
+
 
 A few resources to get you started if this is your first Flutter project:
+
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)

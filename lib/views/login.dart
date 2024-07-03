@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   UserController userController = Get.find<UserController>();
   TextEditingController userName = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -24,72 +23,104 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        children: [
-          SizedBox(height: MediaQuery.of(context).size.height*0.2,),
-          Center(
-            child: Form(
-              key: formKey,
-              child: Card(
-                elevation: 0.2,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Center(child: Text("Login",style: heading3,)),
-                      vSpaceBig,
-                      TextFormField(
-                        controller: userName,
-                        validator: (val)=>Validators.email(val!),
-                        decoration: inputDecoration(
-                          hintText: "UserName",
+    return Scaffold(body: LayoutBuilder(
+      builder: (context, size) {
+        return Center(
+          child: SizedBox(
+            width: size.maxWidth>600?600:size.maxWidth,
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                ),
+                Center(
+                  child: Form(
+                    key: formKey,
+                    child: Card(
+                      elevation: 0.2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Center(
+                                child: Text(
+                              "Login",
+                              style: heading3,
+                            )),
+                            vSpaceBig,
+                            TextFormField(
+                              controller: userName,
+                              validator: (val) => Validators.email(val!),
+                              decoration: inputDecoration(
+                                hintText: "UserName",
+                              ),
+                            ),
+                            vSpaceBig,
+                            TextFormField(
+                              controller: password,
+                              validator: (val) =>
+                                  Validators.empty(val!, "Password required"),
+                              obscureText: !viewPassword,
+                              decoration: inputDecoration(
+                                  suffixIcon: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        viewPassword = !viewPassword;
+                                      });
+                                    },
+                                    child: Icon(
+                                      !viewPassword
+                                          ? CupertinoIcons.eye_slash
+                                          : CupertinoIcons.eye,
+                                      size: 25,
+                                    ),
+                                  ),
+                                  hintText: "Password"),
+                            ),
+                            vSpaceBig,
+                            ElevatedButton(
+                                onPressed: loginWith, child: const Text("Login"))
+                          ],
                         ),
                       ),
-                      vSpaceBig,
-                      TextFormField(
-                        controller: password,
-                        validator: (val)=>Validators.empty(val!,"Password required"),
-                        obscureText: !viewPassword,
-                        decoration: inputDecoration(
-                            suffixIcon: InkWell(onTap:(){
-                              setState(() {
-                                viewPassword = !viewPassword;
-                              });
-                            },child: Icon(!viewPassword?CupertinoIcons.eye_slash:CupertinoIcons.eye,size: 25,),),
-                            hintText: "Password"),
-                      ),
-                      vSpaceBig,
-                      ElevatedButton(onPressed: loginWith, child: const Text("Login"))
-                    ],
+                    ),
                   ),
                 ),
-              ),
+                vSpaceBig,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an Account?",
+                      style: headingSmall,
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Get.toNamed(RoutesName.signUpScreen);
+                        },
+                        child: Text(
+                          "SignUp",
+                          style: headingSmall,
+                        ))
+                  ],
+                )
+              ],
             ),
           ),
-          vSpaceBig,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Don't have an Account?",style: headingSmall,),
-              TextButton(onPressed: (){
-                Get.toNamed(RoutesName.signUpScreen);
-              }, child: Text("SignUp",style: headingSmall,))
-            ],
-          )
-        ],
-      )
-    );
+        );
+      },
+    ));
   }
-  void loginWith()async{
-    var form = formKey.currentState;
-    if(form!.validate()){
-      form.save();
-      var user = await userController.loginWithEmail(userName.text, password.text);
-    }
 
+  void loginWith() async {
+    var form = formKey.currentState;
+    if (form!.validate()) {
+      form.save();
+      var user =
+          await userController.loginWithEmail(userName.text, password.text);
+    }
   }
 }

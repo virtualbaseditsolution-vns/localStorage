@@ -5,4 +5,5 @@ class RoutesName{
   static const String dashboardScreen = "dashboard";
   static const String camerasProfile = "camerasProfile";
   static const String usersScreen = "usersScreen";
+  static const String userProfile = "userProfile";
 }

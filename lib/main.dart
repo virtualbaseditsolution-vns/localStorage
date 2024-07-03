@@ -1,11 +1,13 @@
 import 'package:assignment/config/routes/routes.dart';
 import 'package:assignment/config/routes/routes_name.dart';
 import 'package:assignment/data/user/user_controller.dart';
+import 'package:assignment/db/database.dart';
 import 'package:assignment/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() async{
+  MainDataBase.instance;
   Get.put(UserController());
   runApp(const MyApp());
 }

@@ -1,0 +1,79 @@
+# Flutter related
+build/
+.flutter/
+.dart_tool/
+.packages
+.pub-cache/
+.idea/
+.vscode/
+android/.gradle/
+android/app/proguard-rules.pro
+android/local.properties
+ios/Flutter/.last_build_id
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+ios/Runner.xcworkspace/
+ios/Pods/
+ios/.symlinks/
+ios/Podfile.lock
+web/manifest.json
+web/firebase-messaging-sw.js
+
+# Visual Studio Code settings
+.vscode/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+*.hprof
+
+# Flutter/Dart/Pub related
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-plugins-dependencies.lock
+.flutter-plugins.lock
+flutter_export_environment.sh
+flutter_export_environment.lock
+.dart_tool/
+.packages
+.package-config.json
+package-config.json.lock
+
+# Web related
+web/.dart_tool/
+web/.packages
+web/package-lock.json
+web/node_modules/
+web/.vscode/
+web/.flutter-plugins
+web/.flutter-plugins-dependencies
+web/.flutter-plugins-dependencies.lock
+web/.flutter-plugins.lock
+
+# Project specific
+*.swp
+.DS_Store
+*.log
+*.pid
+*.seed
+*.crt
+*.pem
+*.key
+*.pfx
+*.p12
+.idea/
+android/.local/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Other
+!/.github
+!.gitignore

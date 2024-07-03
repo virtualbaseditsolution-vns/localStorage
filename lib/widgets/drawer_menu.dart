@@ -29,6 +29,17 @@ class DrawerMenu extends StatelessWidget {
                     ),
                   ),
                   ListTile(
+                    title: Text("Profile",style: headingSmall,),
+                    onTap: (){
+                      Get.back();
+                      Get.toNamed(RoutesName.userProfile);
+                    },
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.grey.shade200,
+                      child: const Icon(Icons.person),
+                    ),
+                  ),
+                  ListTile(
                     title: Text("Users",style: headingSmall,),
                     onTap: (){
                       Get.back();
@@ -36,7 +47,7 @@ class DrawerMenu extends StatelessWidget {
                     },
                     leading: CircleAvatar(
                       backgroundColor: Colors.grey.shade200,
-                      child: Icon(Icons.person_2),
+                      child: Icon(Icons.groups),
                     ),
                   )
                 ],

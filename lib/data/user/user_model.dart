@@ -39,7 +39,7 @@ class UserModel {
       );
 
   static UserModel fromJson(Map<String, Object?> json) => UserModel(
-    id: json[UserTableFields.id] as int,
+    id: (json[UserTableFields.id]??0) as int,
     name: json[UserTableFields.name] as String,
     createdTime: DateTime.parse(json[UserTableFields.createdTime] as String),
     mobile: json[UserTableFields.mobile] as String,
